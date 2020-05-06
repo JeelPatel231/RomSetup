@@ -11,4 +11,8 @@ curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
 source ~/.profile
 
+echo "Setting up Externel disk"
+sudo mkdir /mnt/hdd
+sudo mkfs.ext4 /dev/sdc
+sudo mount -t ext4 /dev/sdc /mnt/hdd
 echo "GOOD TO GO!!"
