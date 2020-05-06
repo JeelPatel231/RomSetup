@@ -1,5 +1,6 @@
 echo "Enter Azure Username"
 read -p 'Username: ' uservar
+read -p 'Email : ' email
 read -s 'Password : ' pass
 read -p 'VM-Name: ' myVM
 read -p 'ResourceGroup: ' myResourceGroup
@@ -23,7 +24,7 @@ echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO 
     sudo tee /etc/apt/sources.list.d/azure-cli.list
 sudo apt-get update
 sudo apt-get install azure-cli
-az login -u $uservar -p $pass
+az login -u $email -p $pass
 az vm open-port --resource-group $myResourceGroup --name $myVM --port 3389
 
 echo "Installing Prerequisites"
