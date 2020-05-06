@@ -10,3 +10,5 @@ mkdir -p ~/bin
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
 source ~/.profile
+
+echo "GOOD TO GO!!"
