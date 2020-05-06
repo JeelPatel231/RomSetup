@@ -1,5 +1,7 @@
 echo "Enter Azure Username"
 read -p 'Username: ' uservar
+read -p 'VM-Name: ' myVM
+read -p 'ResourceGroup: ' myResourceGroup
 
 echo "Installing XFCE4 DE"
 sudo apt-get update
@@ -9,6 +11,16 @@ sudo systemctl enable xrdp
 echo xfce4-session >~/.xsession
 sudo service xrdp restart
 sudo passwd $uservar
+
+echo "Setting up CLI"
+AZ_REPO=$(lsb_release -cs)
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
+     sudo tee /etc/apt/sources.list.d/azure-cli.list
+sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 52E16F86FEE04B979B07E28DB02C46DF417A0893
+sudo apt-get install apt-transport-https
+sudo apt-get update && sudo apt-get install azure-cli
+az login
+az vm open-port --resource-group $myResourceGroup --name $myVM --port 3389
 
 echo "Installing Prerequisites"
 sudo apt-get install bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev gedit -y
