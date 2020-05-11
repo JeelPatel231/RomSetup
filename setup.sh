@@ -1,7 +1,7 @@
 echo "Enter Azure Username"
 read -p 'Username: ' uservar
 read -p 'Email : ' email
-read -s 'Password : ' pass
+read -p 'Password : ' pass
 read -p 'VM-Name: ' myVM
 read -p 'ResourceGroup: ' myResourceGroup
 
