@@ -2,6 +2,7 @@ echo "Enter Azure Credentials"
 read -p 'Username: ' uservar
 read -p 'VM-Name: ' myVM
 read -p 'ResourceGroup: ' myResourceGroup
+read -p 'HardDisk : ' hdd
 
 echo "Installing XFCE4 DE"
 sudo apt-get update
@@ -40,6 +41,6 @@ source ~/.profile
 
 echo "Setting up Externel disk"
 sudo mkdir /mnt/hdd
-sudo mkfs.ext4 /dev/sdc
-sudo mount -t ext4 /dev/sdc /mnt/hdd
+sudo mkfs.ext4 /dev/$hdd
+sudo mount -t ext4 /dev/$hdd /mnt/hdd
 echo "GOOD TO GO!!"
